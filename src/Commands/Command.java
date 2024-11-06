@@ -1,4 +1,4 @@
-package src.Commands;
+package Commands;
 import Logger.Logger;
 
 public class Command {

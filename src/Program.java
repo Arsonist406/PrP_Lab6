@@ -1,15 +1,12 @@
-package src;
-
 import Commands.*;
-import Menu.Menu;
+import Menu.*;
 
 import java.util.Scanner;
 
 public class Program {
     public static void main(String[] args) {
-        Menu menu = new Menu();
+        MainMenu menu = new MainMenu();
 
-        // Додаємо команди в меню
         menu.addCommand("0", new ShowMainMenuCommand());
         menu.addCommand("1", new CreateGiftCommand());
         menu.addCommand("2", new PrintGiftCommand());
@@ -23,7 +20,7 @@ public class Program {
         Scanner scanner = new Scanner(System.in);
         String input;
 
-        System.out.println("Type '0' to show the menu or '8' to exit.");
+        System.out.println("Type '0' to show the menu.");
 
         while (true) {
             System.out.print("Enter command: ");

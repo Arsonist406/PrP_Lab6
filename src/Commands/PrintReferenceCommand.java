@@ -1,4 +1,4 @@
-package src.Commands;
+package Commands;
 
 public class PrintReferenceCommand extends Command {
     public PrintReferenceCommand() {

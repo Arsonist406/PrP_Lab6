@@ -1,4 +1,4 @@
-package src.Commands;
+package Commands;
 
 public class CreateGiftCommand extends Command {
     public CreateGiftCommand() {
@@ -7,5 +7,6 @@ public class CreateGiftCommand extends Command {
 
     @Override
     public void execute() {
+
     }
 }

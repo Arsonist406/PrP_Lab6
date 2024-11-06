@@ -1,12 +1,16 @@
-package src.Menu;
+package Menu;
 
 import Commands.Command;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class Menu {
-    private Map<String, Command> commands = new HashMap<>();
+public class MainMenu {
+    private Map<String, Command> commands;
+
+    public MainMenu() {
+        this.commands  = new HashMap<>();
+    }
 
     public void addCommand(String key, Command command) {
         commands.put(key, command);
