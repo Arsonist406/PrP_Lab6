@@ -1,15 +1,15 @@
 package Commands;
 
-import Commands.EG.*;
+import Commands.ECL.*;
 
 import java.util.Scanner;
 
-public class EditGiftCommand extends Command {
+public class EditCandyListCommand extends Command {
     public static void execute() {
         Scanner scanner = new Scanner(System.in);
         String input;
 
-        logger.editGiftMenu();
+        logger.editCandyListMenu();
 
         while (true) {
             logger.enterCommand();
@@ -17,15 +17,21 @@ public class EditGiftCommand extends Command {
 
             switch (input) {
                 case "0":
-                    ShowEGMenuCommand.execute();
+                    ShowECLMenuCommand.execute();
                     break;
                 case "1":
-                    AddCandyToGift.execute();
+                    CreateNewList.execute();
                     break;
                 case "2":
-                    DeleteGift.execute();
+                    AddNewCandyToList.execute();
                     break;
                 case "3":
+                    EditCandyInfo.execute();
+                    break;
+                case "4":
+                    DeleteCandyFromList.execute();
+                    break;
+                case "5":
                     logger.mainMenu();
                     return;
                 default:

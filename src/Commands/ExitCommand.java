@@ -6,7 +6,7 @@ public class ExitCommand extends Command {
     }
 
     @Override
-    public void execute() {
+    public static void execute() {
         this.logger.exit();
         System.exit(0);
     }

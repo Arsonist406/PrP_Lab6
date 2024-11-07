@@ -1,3 +1,5 @@
+package Gift;
+
 import Candy.Candy;
 
 import java.util.List;
@@ -9,12 +11,12 @@ public class Gift {
         this.list = list;
     }
 
-    public List<Candy> getList() {
+    public List<Candy> getGift() {
         return list;
     }
 
-    public void setList(List<Candy> list) {
-        this.list = list;
+    public void addCandy(Candy candy) {
+        list.add(candy);
     }
 
     public String toString() {

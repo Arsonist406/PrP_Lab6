@@ -6,6 +6,6 @@ public class FindCandyCommand extends Command {
     }
 
     @Override
-    public void execute() {
+    public static void execute() {
     }
 }

@@ -1,31 +1,55 @@
 import Commands.*;
-import Menu.*;
+import Gift.Gift;
+import Logger.*;
 
+import java.util.Map;
 import java.util.Scanner;
 
 public class Program {
     public static void main(String[] args) {
-        MainMenu menu = new MainMenu();
-
-        menu.addCommand("0", new ShowMainMenuCommand());
-        menu.addCommand("1", new CreateGiftCommand());
-        menu.addCommand("2", new PrintGiftCommand());
-        menu.addCommand("3", new EditGiftCommand());
-        menu.addCommand("4", new FindCandyCommand());
-        menu.addCommand("5", new PrintCandyDatabaseCommand());
-        menu.addCommand("6", new EditCandyDatabaseCommand());
-        menu.addCommand("7", new PrintReferenceCommand());
-        menu.addCommand("8", new ExitCommand());
+        Map<String, Gift> gifts;
+        Logger logger = new Logger();
 
         Scanner scanner = new Scanner(System.in);
         String input;
 
-        System.out.println("Type '0' to show the menu.");
+        logger.start();
 
         while (true) {
-            System.out.print("Enter command: ");
+            logger.enterCommand();
             input = scanner.nextLine();
-            menu.executeCommand(input);
+
+            switch (input) {
+                case "0":
+                    ShowMainMenuCommand.execute();
+                    break;
+                case "1":
+                    CreateGiftCommand.execute();
+                    break;
+                case "2":
+                    PrintGiftCommand.execute();
+                    break;
+                case "3":
+                    EditGiftCommand.execute();
+                    break;
+                case "4":
+                    FindCandyCommand.execute();
+                    break;
+                case "5":
+                    PrintCandyListCommand.execute();
+                    break;
+                case "6":
+                    EditCandyListCommand.execute();
+                    break;
+                case "7":
+                    PrintReferenceCommand.execute();
+                    break;
+                case "8":
+                    ExitCommand.execute();
+                    break;
+                default:
+                    logger.unknownCommand();
+            }
         }
     }
 }

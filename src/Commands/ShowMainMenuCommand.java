@@ -6,7 +6,7 @@ public class ShowMainMenuCommand extends Command {
     }
 
     @Override
-    public void execute() {
+    public static void execute() {
         this.logger.mainMenu();
     }
 }

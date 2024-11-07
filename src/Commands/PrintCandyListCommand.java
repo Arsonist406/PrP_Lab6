@@ -1,12 +1,11 @@
 package Commands;
 
-public class PrintGiftCommand extends Command {
-    public PrintGiftCommand() {
+public class PrintCandyListCommand extends Command {
+    public PrintCandyListCommand() {
         super();
     }
 
     @Override
     public static void execute() {
-
     }
 }

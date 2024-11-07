@@ -6,6 +6,7 @@ public class PrintReferenceCommand extends Command {
     }
 
     @Override
-    public void execute() {
+    public static void execute() {
+        this.logger.reference();
     }
 }

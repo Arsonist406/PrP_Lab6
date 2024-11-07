@@ -1,18 +1,29 @@
 package Logger;
 
 public class Logger {
-    public static final String RESET = "\u001B[0m";
-    public static final String RED = "\u001B[31m";
-    public static final String GREEN = "\u001B[32m";
-    public static final String LIGHT_GREEN = "\u001B[92m";
-    public static final String YELLOW = "\u001B[33m";
-    public static final String BLUE = "\u001B[34m";
-    public static final String CYAN = "\u001B[36m";
-    public static final String WHITE = "\u001B[37m";
-    public static final String BLACK = "\u001B[40m";
-    public static final String PURPLE = "\u001B[41m";
+    public String RESET;
+    public String RED;
+    public String GREEN;
+    public String LIGHT_GREEN;
+    public String YELLOW;
+    public String BLUE;
+    public String WHITE;
 
-    public static void mainMenu() {
+    public Logger() {
+        RESET = "\u001B[0m";
+        RED = "\u001B[31m";
+        GREEN = "\u001B[32m";
+        LIGHT_GREEN = "\u001B[92m";
+        YELLOW = "\u001B[33m";
+        BLUE = "\u001B[34m";
+        WHITE = "\u001B[37m";
+    }
+
+    public void start() {
+        System.out.println("Type '0' to show the menu.");
+    }
+
+    public void mainMenu() {
         System.out.print(RED + "*" + RESET);
         System.out.print(BLUE + "*" + RESET);
         System.out.print(YELLOW + "*" + RESET);
@@ -37,13 +48,20 @@ public class Logger {
         System.out.println(RESET);
     }
 
-    public static void setNameGift() {
+    public void setNameGift() {
         System.out.println(BLUE);
         System.out.println("Назвіть новий подарунок: ");
         System.out.println(RESET);
     }
 
-    public static void editGiftMenu() {
+    public void chooseCandy() {
+        System.out.println(BLUE);
+        System.out.println("Введіть через enter номери цукерок зі списку, які ви хочете добавити в подарунок.");
+        System.out.println("Для закінчення введіть '0'.");
+        System.out.println(RESET);
+    }
+
+    public void editGiftMenu() {
         System.out.println(LIGHT_GREEN);
         System.out.println("***Меню редагування подарунку***");
         System.out.println("1. Добавити цукерку в подарунок");
@@ -52,7 +70,7 @@ public class Logger {
         System.out.println(RESET);
     }
 
-    public static void editCandyDataBaseMenu() {
+    public void editCandyListMenu() {
         System.out.println(LIGHT_GREEN);
         System.out.println("***Меню редагування бази даних цукерок***");
         System.out.println("1. Створити нову базу даних цукерок");
@@ -63,7 +81,21 @@ public class Logger {
         System.out.println(RESET);
     }
 
-    public static void exit() {
+    public void reference() {
+        System.out.println(WHITE);
+        System.out.println("");
+        System.out.println(RESET);
+    }
+
+    public void enterCommand() {
+        System.out.print("Enter command: ");
+    }
+
+    public void unknownCommand() {
+        System.out.println("Unknown command");
+    }
+
+    public void exit() {
         System.out.println(GREEN);
         System.out.println("До побачення!");
         System.out.println(RESET);

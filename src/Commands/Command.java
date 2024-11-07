@@ -1,12 +1,16 @@
 package Commands;
+
 import Logger.Logger;
 
 public class Command {
-    protected Logger logger;
+    protected static Logger logger;
 
-    public Command() {
-        logger = new Logger();
+    public static void execute() {return;}
+
+    public boolean isCreateGift() {
+        if (this instanceof CreateGiftCommand) {
+            return true;
+        }
+        return false;
     }
-
-    public void execute() {return;}
 }
