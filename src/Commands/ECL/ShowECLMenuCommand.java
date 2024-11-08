@@ -1,14 +1,8 @@
 package Commands.ECL;
 
-import Commands.Command;
+import Logger.Logger;
 
-public class ShowECLMenuCommand extends Command {
-    public ShowECLMenuCommand() {
-        super();
-    }
+public class ShowECLMenuCommand {
 
-    @Override
-    public static void execute() {
-        this.logger.editCandyDataBaseMenu();
-    }
+    public static void execute() {Logger.editCandyListMenu();}
 }

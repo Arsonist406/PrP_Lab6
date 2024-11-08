@@ -1,6 +1,11 @@
 package Commands.ECL;
 
-import Commands.Command;
+import Candy.Candy;
 
-public class EditCandyInfo extends Command {
+import java.util.ArrayList;
+
+public class EditCandyInfo {
+    public static void execute(ArrayList<Candy> candyList) {
+
+    }
 }

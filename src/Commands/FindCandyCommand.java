@@ -1,11 +1,7 @@
 package Commands;
 
-public class FindCandyCommand extends Command {
-    public FindCandyCommand() {
-        super();
-    }
+public class FindCandyCommand {
 
-    @Override
     public static void execute() {
     }
 }

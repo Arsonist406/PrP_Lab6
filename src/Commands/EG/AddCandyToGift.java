@@ -1,6 +1,9 @@
 package Commands.EG;
 
-import Commands.Command;
+import Logger.Logger;
 
-public class AddCandyToGift extends Command {
+public class AddCandyToGift {
+    public static void execute() {
+
+    }
 }

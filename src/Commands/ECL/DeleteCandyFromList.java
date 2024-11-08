@@ -1,6 +1,13 @@
 package Commands.ECL;
 
-import Commands.Command;
+import Candy.Candy;
+import Commands.PrintCandyListCommand;
 
-public class DeleteCandyFromList extends Command {
+import java.util.ArrayList;
+
+public class DeleteCandyFromList {
+    public static void execute(ArrayList<Candy> candyList) {
+        PrintCandyListCommand.execute(candyList);
+        System.out.print("Введіть назву цукерки зі списку, яку хочете видалити: ");
+    }
 }

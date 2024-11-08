@@ -1,22 +1,25 @@
-import Commands.*;
+import Candy.*;
 import Gift.Gift;
+import Commands.*;
 import Logger.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
 public class Program {
     public static void main(String[] args) {
-        Map<String, Gift> gifts;
-        Logger logger = new Logger();
+        ArrayList<Candy> candyList = new ArrayList();
+        Map<String, Gift> gift = new HashMap();
+
+        createStartCandy(candyList);
 
         Scanner scanner = new Scanner(System.in);
         String input;
 
-        logger.start();
-
         while (true) {
-            logger.enterCommand();
+            Logger.enterCommand();
             input = scanner.nextLine();
 
             switch (input) {
@@ -30,16 +33,16 @@ public class Program {
                     PrintGiftCommand.execute();
                     break;
                 case "3":
-                    EditGiftCommand.execute();
+                    PrintEditGiftMenuCommand.execute();
                     break;
                 case "4":
                     FindCandyCommand.execute();
                     break;
                 case "5":
-                    PrintCandyListCommand.execute();
+                    PrintCandyListCommand.execute(candyList);
                     break;
                 case "6":
-                    EditCandyListCommand.execute();
+                    PrintEditCandyListMenuCommand.execute(candyList);
                     break;
                 case "7":
                     PrintReferenceCommand.execute();
@@ -48,8 +51,28 @@ public class Program {
                     ExitCommand.execute();
                     break;
                 default:
-                    logger.unknownCommand();
+                    Logger.unknownCommand();
             }
+        }
+    }
+
+    public static void createStartCandy(ArrayList<Candy> candyList) {
+        Scanner scanner2 = new Scanner(System.in);
+        Logger.start();
+        Logger.createStartCandy();
+        Boolean temp = scanner2.nextBoolean();
+        if (temp) {
+            candyList.add(new Jelly("Шалена Бджілка", "Roshen", "Желейна", "Прямокутник",
+                    "Поліетилен", 8F, 318F, 65.5F, false,
+                    "Фруктовий сік", "-", "Фрукти"));
+
+            candyList.add(new Chocolate("Зоряне Сяйво", "Світоч", "Шоколадна", "Конус",
+                    "Фольга", 13F, 497F, 49F, false,
+                    "-", "Вафельна посипка", "Арахіс"));
+
+            candyList.add(new Lollipop("Плюсик", "Roshen", "Льодяник", "Еліпсоїд",
+                    "Поліетилен", 10F, 392F, 63.8F, true,
+                    "-", "-", "Ментол"));
         }
     }
 }

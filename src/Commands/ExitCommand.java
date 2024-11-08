@@ -1,13 +1,11 @@
 package Commands;
 
-public class ExitCommand extends Command {
-    public ExitCommand() {
-        super();
-    }
+import Logger.Logger;
 
-    @Override
+public class ExitCommand {
+
     public static void execute() {
-        this.logger.exit();
+        Logger.exit();
         System.exit(0);
     }
 }

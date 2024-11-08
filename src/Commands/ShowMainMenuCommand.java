@@ -1,12 +1,13 @@
 package Commands;
 
-public class ShowMainMenuCommand extends Command {
+import Logger.Logger;
+
+public class ShowMainMenuCommand {
     public ShowMainMenuCommand() {
         super();
     }
 
-    @Override
     public static void execute() {
-        this.logger.mainMenu();
+        Logger.mainMenu();
     }
 }

@@ -1,18 +1,19 @@
 package Commands;
 
 import Commands.EG.*;
+import Logger.Logger;
 
 import java.util.Scanner;
 
-public class EditGiftCommand extends Command {
+public class PrintEditGiftMenuCommand {
     public static void execute() {
         Scanner scanner = new Scanner(System.in);
         String input;
 
-        logger.editGiftMenu();
+        Logger.editGiftMenu();
 
         while (true) {
-            logger.enterCommand();
+            Logger.enterCommand();
             input = scanner.nextLine();
 
             switch (input) {
@@ -26,10 +27,10 @@ public class EditGiftCommand extends Command {
                     DeleteGift.execute();
                     break;
                 case "3":
-                    logger.mainMenu();
+                    Logger.mainMenu();
                     return;
                 default:
-                    logger.unknownCommand();
+                    Logger.unknownCommand();
             }
         }
     }

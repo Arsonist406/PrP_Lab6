@@ -1,11 +1,14 @@
 package Commands;
 
-public class PrintCandyListCommand extends Command {
-    public PrintCandyListCommand() {
-        super();
-    }
+import Candy.Candy;
 
-    @Override
-    public static void execute() {
+import java.util.ArrayList;
+
+public class PrintCandyListCommand {
+
+    public static void execute(ArrayList<Candy> candyList) {
+        for (Candy candy : candyList) {
+            System.out.println(candy.toString());
+        }
     }
 }

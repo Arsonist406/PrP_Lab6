@@ -1,23 +1,20 @@
 package Commands;
 
 import Gift.*;
+import Logger.Logger;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class CreateGiftCommand extends Command {
-    public CreateGiftCommand() {
-        super();
-    }
+public class CreateGiftCommand {
 
-    public Map<String, Gift> createGift() {
+    public static Map<String, Gift> execute() {
         Scanner scanner = new Scanner(System.in);
 
-        logger.setNameGift();
+        //Logger.setNameGift();
         String name = scanner.nextLine();
 
-        logger.chooseCandy();
+        //Logger.chooseCandy();
         String number = "";
         Gift temp;
         while (true) {

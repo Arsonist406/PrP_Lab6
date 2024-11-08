@@ -1,14 +1,9 @@
 package Commands.EG;
 
-import Commands.Command;
+import Logger.Logger;
 
-public class ShowEGMenuCommand extends Command {
-    public ShowEGMenuCommand() {
-        super();
-    }
-
-    @Override
+public class ShowEGMenuCommand {
     public static void execute() {
-        this.logger.editGiftMenu();
+        Logger.editGiftMenu();
     }
 }

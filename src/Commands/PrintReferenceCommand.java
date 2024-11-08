@@ -1,12 +1,10 @@
 package Commands;
 
-public class PrintReferenceCommand extends Command {
-    public PrintReferenceCommand() {
-        super();
-    }
+import Logger.Logger;
 
-    @Override
+public class PrintReferenceCommand {
+
     public static void execute() {
-        this.logger.reference();
+        Logger.reference();
     }
 }

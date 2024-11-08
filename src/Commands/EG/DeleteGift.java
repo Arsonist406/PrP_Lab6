@@ -1,6 +1,9 @@
 package Commands.EG;
 
-import Commands.Command;
+import Logger.Logger;
 
-public class DeleteGift extends Command {
+public class DeleteGift {
+    public static void execute() {
+
+    }
 }

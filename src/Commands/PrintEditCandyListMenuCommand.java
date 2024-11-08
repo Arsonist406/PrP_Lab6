@@ -2,17 +2,22 @@ package Commands;
 
 import Commands.ECL.*;
 
+import Candy.*;
+import Logger.Logger;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class EditCandyListCommand extends Command {
-    public static void execute() {
+public class PrintEditCandyListMenuCommand {
+
+    public static void execute(ArrayList<Candy> candyList) {
         Scanner scanner = new Scanner(System.in);
         String input;
 
-        logger.editCandyListMenu();
+        Logger.editCandyListMenu();
 
         while (true) {
-            logger.enterCommand();
+            Logger.enterCommand();
             input = scanner.nextLine();
 
             switch (input) {
@@ -20,22 +25,22 @@ public class EditCandyListCommand extends Command {
                     ShowECLMenuCommand.execute();
                     break;
                 case "1":
-                    CreateNewList.execute();
+                    CreateNewList.execute(candyList);
                     break;
                 case "2":
-                    AddNewCandyToList.execute();
+                    AddNewCandyToList.execute(candyList);
                     break;
                 case "3":
-                    EditCandyInfo.execute();
+                    EditCandyInfo.execute(candyList);
                     break;
                 case "4":
-                    DeleteCandyFromList.execute();
+                    DeleteCandyFromList.execute(candyList);
                     break;
                 case "5":
-                    logger.mainMenu();
+                    Logger.mainMenu();
                     return;
                 default:
-                    logger.unknownCommand();
+                    Logger.unknownCommand();
             }
         }
     }
