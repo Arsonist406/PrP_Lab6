@@ -25,64 +25,66 @@ public class AddNewCandyToList {
         Logger.getCandyPackageType();
         String packageType = scanner.nextLine();
 
-        Logger.getCandyWeight();
-        float weight = scanner.nextFloat();
-
-        Logger.getCandyCalorieContent();
-        float calorieContent = scanner.nextFloat();
-
-        Logger.getCandySugarContent();
-        float sugarContent = scanner.nextFloat();
-
-        Logger.getCandyHypoallergenic();
-        boolean hypoallergenic = !scanner.nextBoolean();
-
         Scanner scanner2 = new Scanner(System.in);
 
+        Logger.getCandyWeight();
+        double weight = scanner2.nextFloat();
+
+        Logger.getCandyCalorieContent();
+        double calorieContent = scanner2.nextFloat();
+
+        Logger.getCandySugarContent();
+        double sugarContent = scanner2.nextFloat();
+
+        Logger.getCandyHypoallergenic();
+        boolean hypoallergenic = !scanner2.nextBoolean();
+
+        Scanner scanner3 = new Scanner(System.in);
+
         Logger.getCandyFilling();
-        String filling = scanner2.nextLine();
+        String filling = scanner3.nextLine();
 
         Logger.getCandyAdditives();
-        String additives = scanner2.nextLine();
+        String additives = scanner3.nextLine();
 
         Logger.getCandyFlavors();
-        String flavors = scanner2.nextLine();
+        String flavors = scanner3.nextLine();
 
         switch (type) {
             case "Грильяж", "грильяж":
-                candyList.add(new Brittle(name, brand, type, shape, packageType, weight, calorieContent, sugarContent, hypoallergenic,
+                candyList.add(new Brittle(name, brand, shape, packageType, weight, calorieContent, sugarContent, hypoallergenic,
                         filling, additives, flavors));
                 break;
             case "Шоколадна", "шоколадна":
-                candyList.add(new Chocolate(name, brand, type, shape, packageType, weight, calorieContent, sugarContent, hypoallergenic,
+                candyList.add(new Chocolate(name, brand, shape, packageType, weight, calorieContent, sugarContent, hypoallergenic,
                         filling, additives, flavors));
                 break;
             case "Драже", "драже":
-                candyList.add(new Dragee(name, brand, type, shape, packageType, weight, calorieContent, sugarContent, hypoallergenic,
+                candyList.add(new Dragee(name, brand, shape, packageType, weight, calorieContent, sugarContent, hypoallergenic,
                         filling, additives, flavors));
                 break;
             case "Жувальна", "жувальна":
-                candyList.add(new Gum(name, brand, type, shape, packageType, weight, calorieContent, sugarContent, hypoallergenic,
+                candyList.add(new Gum(name, brand, shape, packageType, weight, calorieContent, sugarContent, hypoallergenic,
                         filling, additives, flavors));
                 break;
             case "Желейна", "желейна":
-                candyList.add(new Jelly(name, brand, type, shape, packageType, weight, calorieContent, sugarContent, hypoallergenic,
+                candyList.add(new Jelly(name, brand, shape, packageType, weight, calorieContent, sugarContent, hypoallergenic,
                         filling, additives, flavors));
                 break;
             case "Льодяник", "льодяник":
-                candyList.add(new Lollipop(name, brand, type, shape, packageType, weight, calorieContent, sugarContent, hypoallergenic,
+                candyList.add(new Lollipop(name, brand, shape, packageType, weight, calorieContent, sugarContent, hypoallergenic,
                         filling, additives, flavors));
                 break;
             case "Пастила", "пастила":
-                candyList.add(new Pastila(name, brand, type, shape, packageType, weight, calorieContent, sugarContent, hypoallergenic,
+                candyList.add(new Pastila(name, brand, shape, packageType, weight, calorieContent, sugarContent, hypoallergenic,
                         filling, additives, flavors));
                 break;
             case "Ірис", "ірис":
-                candyList.add(new Toffe(name, brand, type, shape, packageType, weight, calorieContent, sugarContent, hypoallergenic,
+                candyList.add(new Toffe(name, brand, shape, packageType, weight, calorieContent, sugarContent, hypoallergenic,
                         filling, additives, flavors));
                 break;
             case "Вафельна", "вафельна":
-                candyList.add(new Waffle(name, brand, type, shape, packageType, weight, calorieContent, sugarContent, hypoallergenic,
+                candyList.add(new Waffle(name, brand, shape, packageType, weight, calorieContent, sugarContent, hypoallergenic,
                         filling, additives, flavors));
                 break;
             default:

@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class PrintEditCandyListMenuCommand {
 
-    public static void execute(ArrayList<Candy> candyList) {
+    public static void execute(ArrayList<Candy> candyList) throws IllegalAccessException {
         Scanner scanner = new Scanner(System.in);
         String input;
 

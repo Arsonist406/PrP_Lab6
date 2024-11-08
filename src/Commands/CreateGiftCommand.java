@@ -1,31 +1,35 @@
 package Commands;
 
+import Candy.Candy;
 import Gift.*;
 import Logger.Logger;
 
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Scanner;
 
 public class CreateGiftCommand {
 
-    public static Map<String, Gift> execute() {
+    public static void execute(Gift gift, ArrayList<Candy> candyList) {
         Scanner scanner = new Scanner(System.in);
 
-        //Logger.setNameGift();
+        System.out.print("Введіть назву подарунку: ");
         String name = scanner.nextLine();
+        gift.setName(name);
 
-        //Logger.chooseCandy();
-        String number = "";
-        Gift temp;
         while (true) {
-            number = scanner.nextLine();
-            if (number.equals("0")) {
+            Candy result = FindCandyByNameCommand.execute(candyList);
+
+            System.out.print("Введіть кількість: ");
+            String amount = scanner.nextLine();
+
+            gift.addCandyToListOfCandies(result, amount);
+
+            Logger.toStop();
+            String input = scanner.nextLine();
+            if (input.equals("end")) {
                 break;
             }
-            //temp.addCandy();
         }
-        //Map<String, Gift> gift = new HashMap<String, Gift>(name, temp);
-        Map<String, Gift> gift = null;
-        return gift;
     }
 }

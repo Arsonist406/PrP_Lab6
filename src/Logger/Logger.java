@@ -18,7 +18,7 @@ public class Logger {
     }
 
     public static void toStop() {
-        System.out.println("Для закінчення введіть 'end'.");
+        System.out.println("Для закінчення введіть зараз 'end'.");
     }
 
     public static void mainMenu() {
@@ -48,8 +48,19 @@ public class Logger {
 
 
     public static void editGiftMenu() {
+        System.out.print(RED + "*" + RESET);
+        System.out.print(BLUE + "*" + RESET);
+        System.out.print(YELLOW + "*" + RESET);
+
         System.out.println(LIGHT_GREEN);
-        System.out.println("***Меню редагування подарунку***");
+        System.out.println("Меню редагування подарунку");
+        System.out.println(RESET);
+
+        System.out.print(YELLOW + "*" + RESET);
+        System.out.print(BLUE + "*" + RESET);
+        System.out.print(RED + "*" + RESET);
+
+        System.out.println(LIGHT_GREEN);
         System.out.println("1. Добавити цукерку в подарунок");
         System.out.println("2. Видалити подарунок");
         System.out.println("3. Вихід");
@@ -58,8 +69,19 @@ public class Logger {
 
 
     public static void editCandyListMenu() {
+        System.out.print(RED + "*" + RESET);
+        System.out.print(BLUE + "*" + RESET);
+        System.out.print(YELLOW + "*" + RESET);
+
         System.out.println(LIGHT_GREEN);
-        System.out.println("***Меню редагування списку цукерок***");
+        System.out.println("Меню редагування списку цукерок");
+        System.out.println(RESET);
+
+        System.out.print(YELLOW + "*" + RESET);
+        System.out.print(BLUE + "*" + RESET);
+        System.out.print(RED + "*" + RESET);
+
+        System.out.println(LIGHT_GREEN);
         System.out.println("1. Створити новий список цукерок");
         System.out.println("2. Добавити нову цукерку в список");
         System.out.println("3. Змінити інформацію про цукерку");
@@ -142,8 +164,8 @@ public class Logger {
     }
 
     public static void exit() {
-        System.out.println(GREEN);
+        System.out.print(GREEN);
         System.out.println("До побачення!");
-        System.out.println(RESET);
+        System.out.print(RESET);
     }
 }

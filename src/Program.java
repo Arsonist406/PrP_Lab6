@@ -4,16 +4,15 @@ import Commands.*;
 import Logger.*;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 public class Program {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IllegalAccessException {
         ArrayList<Candy> candyList = new ArrayList();
-        Map<String, Gift> gift = new HashMap();
+        Gift gift = new Gift(null);
 
         createStartCandy(candyList);
+        Logger.start();
 
         Scanner scanner = new Scanner(System.in);
         String input;
@@ -27,7 +26,7 @@ public class Program {
                     ShowMainMenuCommand.execute();
                     break;
                 case "1":
-                    CreateGiftCommand.execute();
+                    CreateGiftCommand.execute(gift, candyList);
                     break;
                 case "2":
                     PrintGiftCommand.execute();
@@ -36,7 +35,7 @@ public class Program {
                     PrintEditGiftMenuCommand.execute();
                     break;
                 case "4":
-                    FindCandyCommand.execute();
+                    FindCandyByNameCommand.execute(candyList);
                     break;
                 case "5":
                     PrintCandyListCommand.execute(candyList);
@@ -58,20 +57,19 @@ public class Program {
 
     public static void createStartCandy(ArrayList<Candy> candyList) {
         Scanner scanner2 = new Scanner(System.in);
-        Logger.start();
         Logger.createStartCandy();
         Boolean temp = scanner2.nextBoolean();
         if (temp) {
-            candyList.add(new Jelly("Шалена Бджілка", "Roshen", "Желейна", "Прямокутник",
-                    "Поліетилен", 8F, 318F, 65.5F, false,
+            candyList.add(new Jelly("Шалена Бджілка", "Roshen", "Прямокутник",
+                    "Поліетилен", 8, 318, 65.5, false,
                     "Фруктовий сік", "-", "Фрукти"));
 
-            candyList.add(new Chocolate("Зоряне Сяйво", "Світоч", "Шоколадна", "Конус",
-                    "Фольга", 13F, 497F, 49F, false,
+            candyList.add(new Chocolate("Зоряне Сяйво", "Світоч", "Конус",
+                    "Фольга", 13, 497, 49, false,
                     "-", "Вафельна посипка", "Арахіс"));
 
-            candyList.add(new Lollipop("Плюсик", "Roshen", "Льодяник", "Еліпсоїд",
-                    "Поліетилен", 10F, 392F, 63.8F, true,
+            candyList.add(new Lollipop("Плюсик", "Roshen", "Еліпсоїд",
+                    "Поліетилен", 10, 392, 63.8, true,
                     "-", "-", "Ментол"));
         }
     }

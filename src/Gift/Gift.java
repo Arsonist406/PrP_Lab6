@@ -2,28 +2,36 @@ package Gift;
 
 import Candy.Candy;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Gift {
-    private List<Candy> list;
+    private String name;
+    private Map<String, Candy> listOfCandies;
 
-    public Gift(List<Candy> list) {
-        this.list = list;
+    public Gift(String name) {
+        this.name = name;
+        this.listOfCandies = new HashMap<String, Candy>();
     }
 
-    public List<Candy> getGift() {
-        return list;
+    public String getName() {
+        return name;
     }
 
-    public void addCandy(Candy candy) {
-        list.add(candy);
+    public Map<String, Candy> getListOfCandies() {
+        return listOfCandies;
     }
 
-    public String toString() {
-        String str = "";
-        for (Candy candy : list) {
-            str += candy.toString();
-        }
-        return str;
+    public void setName(String name) {
+        this.name = name;
     }
+
+    public void setListOfCandies(Map<String, Candy> listOfCandies) {
+        this.listOfCandies = listOfCandies;
+    }
+
+    public void addCandyToListOfCandies(Candy candy, String amount) {
+        listOfCandies.put(amount, candy);
+    }
+
 }

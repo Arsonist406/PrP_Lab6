@@ -11,9 +11,9 @@ public class CreateNewList {
         candyList.clear();
         Scanner scanner = new Scanner(System.in);
 
-        Logger.toStop();
         while (true) {
             AddNewCandyToList.execute(candyList);
+            Logger.toStop();
             String input = scanner.nextLine();
             if (input.equals("end")) {
                 break;
