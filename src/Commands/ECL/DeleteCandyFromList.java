@@ -1,15 +1,23 @@
 package Commands.ECL;
 
 import Candy.Candy;
-import Commands.FindCandyByNameCommand;
-import Commands.PrintCandyListCommand;
+import Commands.Command;
+import Function.FindCandyByName;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
-public class DeleteCandyFromList {
-    public static void execute(ArrayList<Candy> candyList) {
-        Candy result = FindCandyByNameCommand.execute(candyList);
+public class DeleteCandyFromList extends Command {
+    private ArrayList<Candy> candyList;
+
+    public DeleteCandyFromList(ArrayList<Candy> candyList) {
+        super();
+        this.candyList = candyList;
+    }
+
+    @Override
+    public void execute() {
+        FindCandyByName func = new FindCandyByName(candyList);
+        Candy result = func.execute();
 
         if (result != null) {
             candyList.remove(result);

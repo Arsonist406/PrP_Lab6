@@ -1,76 +1,72 @@
 import Candy.*;
-import Gift.Gift;
+import Function.ReadFromFile;
+import Gift.*;
 import Commands.*;
-import Logger.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 public class Program {
-    public static void main(String[] args) throws IllegalAccessException {
+    public static void main(String[] args) {
         ArrayList<Candy> candyList = new ArrayList();
         Gift gift = new Gift(null);
 
         createStartCandy(candyList);
-        Logger.start();
+        System.out.println("Type '0' to show the menu.");
 
         Scanner scanner = new Scanner(System.in);
         String input;
 
         while (true) {
-            Logger.enterCommand();
+            System.out.print("Enter command: ");
             input = scanner.nextLine();
 
             switch (input) {
                 case "0":
-                    ShowMainMenuCommand.execute();
+                    ShowMainMenuCommand command1 = new ShowMainMenuCommand();
+                    command1.execute();
                     break;
                 case "1":
-                    CreateGiftCommand.execute(gift, candyList);
+                    CreateGiftCommand command2 = new CreateGiftCommand(gift, candyList);
+                    command2.execute();
                     break;
                 case "2":
-                    PrintGiftCommand.execute();
+                    PrintGiftCommand command3 = new PrintGiftCommand(gift);
+                    command3.execute();
                     break;
                 case "3":
-                    PrintEditGiftMenuCommand.execute();
+                    FindCandyBySugarContentCommand command4 = new FindCandyBySugarContentCommand(gift);
+                    command4.execute();
                     break;
                 case "4":
-                    FindCandyByNameCommand.execute(candyList);
+                    PrintCandyListCommand command5 = new PrintCandyListCommand(candyList);
+                    command5.execute();
                     break;
                 case "5":
-                    PrintCandyListCommand.execute(candyList);
+                    PrintEditCandyListMenuCommand command6 = new PrintEditCandyListMenuCommand(candyList);
+                    command6.execute();
                     break;
                 case "6":
-                    PrintEditCandyListMenuCommand.execute(candyList);
-                    break;
-                case "7":
-                    PrintReferenceCommand.execute();
-                    break;
-                case "8":
-                    ExitCommand.execute();
+                    ExitCommand command7 = new ExitCommand();
+                    command7.execute();
                     break;
                 default:
-                    Logger.unknownCommand();
+                    System.out.println("Unknown command");
             }
         }
     }
 
     public static void createStartCandy(ArrayList<Candy> candyList) {
         Scanner scanner2 = new Scanner(System.in);
-        Logger.createStartCandy();
+        System.out.println("Створити пару стартових цукерок? (true / false)");
         Boolean temp = scanner2.nextBoolean();
+
+        String path = "D:\\Шарага\\Проекти на джаві\\PrP_Lab5\\src\\candys";
+
         if (temp) {
-            candyList.add(new Jelly("Шалена Бджілка", "Roshen", "Прямокутник",
-                    "Поліетилен", 8, 318, 65.5, false,
-                    "Фруктовий сік", "-", "Фрукти"));
-
-            candyList.add(new Chocolate("Зоряне Сяйво", "Світоч", "Конус",
-                    "Фольга", 13, 497, 49, false,
-                    "-", "Вафельна посипка", "Арахіс"));
-
-            candyList.add(new Lollipop("Плюсик", "Roshen", "Еліпсоїд",
-                    "Поліетилен", 10, 392, 63.8, true,
-                    "-", "-", "Ментол"));
+            ReadFromFile func = new ReadFromFile(path, candyList);
+            func.readFile();
         }
     }
 }

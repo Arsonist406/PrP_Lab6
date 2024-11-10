@@ -3,6 +3,7 @@ package Candy;
 public class Candy {
     private String name;
     private String brand;
+    private String type;
     private String shape;
     private String packageType;
     private double weight;
@@ -13,10 +14,11 @@ public class Candy {
     private String additives;
     private String flavors;
 
-    public Candy(String name, String brand, String shape, String packageType, double weight, double calorieContent,
+    public Candy(String name, String brand, String type, String shape, String packageType, double weight, double calorieContent,
                  double sugarContent, boolean hypoallergenic, String filling, String additives, String flavors) {
         this.name = name;
         this.brand = brand;
+        this.type = type;
         this.shape = shape;
         this.packageType = packageType;
         this.weight = weight;
@@ -30,6 +32,7 @@ public class Candy {
 
     public String getName() {return name;}
     public String getBrand() {return brand;}
+    public String getType() {return type;}
     public String getShape() {return shape;}
     public String getPackageType() {return packageType;}
     public double getWeight() {return weight;}
@@ -42,6 +45,7 @@ public class Candy {
 
     public void setName(String name) {this.name = name;}
     public void setBrand(String brand) {this.brand = brand;}
+    public void setType(String type) {this.type = type;}
     public void setShape(String shape) {this.shape = shape;}
     public void setPackageType(String packageType) {this.packageType = packageType;}
     public void setWeight(double weight) {this.weight = weight;}
@@ -53,7 +57,7 @@ public class Candy {
     public void setFlavors(String flavors) {this.flavors = flavors;}
 
     public String toString() {
-        return "\nНазва: " + name + "\n Виробник: " + brand + "\n Тип: " + getClass().getSimpleName() + "\n Форма: " + shape +
+        return "\nНазва: " + name + "\n Виробник: " + brand + "\n Тип: " + type + "\n Форма: " + shape +
                 "\n Тип пакунку: " + packageType + "\n Вага: " + weight + " грам" + "\n Калорійність: " + calorieContent + " ккал" +
                 "\n Вміст цукру: " + sugarContent + " грам" + "\n Гіпоалергенність: " + hypoallergenic +
                 "\n Наповнювач: " + filling + "\n Добавки: " + additives + "\n Ароматизатори: " + flavors;

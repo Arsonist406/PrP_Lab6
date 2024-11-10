@@ -1,16 +1,24 @@
 package Commands;
 
 import Candy.Candy;
+import Function.FindCandyByName;
 import Gift.*;
-import Logger.Logger;
 
 import java.util.ArrayList;
-import java.util.Map;
 import java.util.Scanner;
 
-public class CreateGiftCommand {
+public class CreateGiftCommand extends Command {
+    private Gift gift;
+    private ArrayList<Candy> candyList;
 
-    public static void execute(Gift gift, ArrayList<Candy> candyList) {
+    public CreateGiftCommand(Gift gift, ArrayList<Candy> candyList) {
+        super();
+        this.gift = gift;
+        this.candyList = candyList;
+    }
+
+    @Override
+    public void execute() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Введіть назву подарунку: ");
@@ -18,14 +26,17 @@ public class CreateGiftCommand {
         gift.setName(name);
 
         while (true) {
-            Candy result = FindCandyByNameCommand.execute(candyList);
+            FindCandyByName func = new FindCandyByName(candyList);
+            Candy result = func.execute();
 
             System.out.print("Введіть кількість: ");
             String amount = scanner.nextLine();
 
+            gift.setWeight(gift.getWeight() + result.getWeight() * Double.parseDouble(amount));
+
             gift.addCandyToListOfCandies(result, amount);
 
-            Logger.toStop();
+            System.out.println("Для закінчення введіть зараз 'end'.");
             String input = scanner.nextLine();
             if (input.equals("end")) {
                 break;

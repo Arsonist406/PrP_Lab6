@@ -1,24 +1,35 @@
 package Commands.ECL;
 
 import Candy.Candy;
-import Logger.Logger;
+import Commands.Command;
+
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class CreateNewList {
-    public static void execute(ArrayList<Candy> candyList) {
+public class CreateNewList extends Command {
+    private ArrayList<Candy> candyList;
+
+    public CreateNewList(ArrayList<Candy> candyList) {
+        super();
+        this.candyList = candyList;
+    }
+
+    @Override
+    public void execute() {
         candyList.clear();
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            AddNewCandyToList.execute(candyList);
-            Logger.toStop();
+            AddNewCandyToList command = new AddNewCandyToList(candyList);
+            command.execute();
+
+            System.out.println("Для закінчення введіть зараз 'end'.");
             String input = scanner.nextLine();
             if (input.equals("end")) {
                 break;
             }
         }
-        Logger.newCandyListWasCreated();
+        System.out.println("Новий список цукерок створено.");
     }
 }

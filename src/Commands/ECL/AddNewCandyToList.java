@@ -1,95 +1,64 @@
 package Commands.ECL;
 
 import Candy.*;
-import Logger.Logger;
+import Commands.Command;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class AddNewCandyToList {
-    public static void execute(ArrayList<Candy> candyList) {
+public class AddNewCandyToList extends Command {
+    private ArrayList<Candy> candyList;
+
+    public AddNewCandyToList(ArrayList<Candy> candyList) {
+        super();
+        this.candyList = candyList;
+    }
+
+    @Override
+    public void execute() {
         Scanner scanner = new Scanner(System.in);
 
-        Logger.getCandyName();
+        System.out.print("Введіть назву цукерки: ");
         String name = scanner.nextLine();
 
-        Logger.getCandyBrand();
+        System.out.print("Введіть назву бренду: ");
         String brand = scanner.nextLine();
 
-        Logger.getCandyType();
+        System.out.print("Введіть тип цукерки: ");
         String type = scanner.nextLine();
 
-        Logger.getCandyShape();
+        System.out.print("Введіть форму цукерки: ");
         String shape = scanner.nextLine();
 
-        Logger.getCandyPackageType();
+        System.out.print("Введіть тип пакунку: ");
         String packageType = scanner.nextLine();
 
         Scanner scanner2 = new Scanner(System.in);
 
-        Logger.getCandyWeight();
-        double weight = scanner2.nextFloat();
+        System.out.print("Введіть вагу: ");
+        double weight = scanner2.nextDouble();
 
-        Logger.getCandyCalorieContent();
-        double calorieContent = scanner2.nextFloat();
+        System.out.print("Введіть калорійність: ");
+        double calorieContent = scanner2.nextDouble();
 
-        Logger.getCandySugarContent();
-        double sugarContent = scanner2.nextFloat();
+        System.out.print("Введіть вмістимість цукру: ");
+        double sugarContent = scanner2.nextDouble();
 
-        Logger.getCandyHypoallergenic();
+        System.out.print("Ця цукерка викликає алергічні реакції? (true / false): ");
         boolean hypoallergenic = !scanner2.nextBoolean();
 
         Scanner scanner3 = new Scanner(System.in);
 
-        Logger.getCandyFilling();
+        System.out.print("Введіть наповнювач: ");
         String filling = scanner3.nextLine();
 
-        Logger.getCandyAdditives();
+        System.out.print("Введіть добавку: ");
         String additives = scanner3.nextLine();
 
-        Logger.getCandyFlavors();
+        System.out.print("Введіть ароматизатор: ");
         String flavors = scanner3.nextLine();
 
-        switch (type) {
-            case "Грильяж", "грильяж":
-                candyList.add(new Brittle(name, brand, shape, packageType, weight, calorieContent, sugarContent, hypoallergenic,
-                        filling, additives, flavors));
-                break;
-            case "Шоколадна", "шоколадна":
-                candyList.add(new Chocolate(name, brand, shape, packageType, weight, calorieContent, sugarContent, hypoallergenic,
-                        filling, additives, flavors));
-                break;
-            case "Драже", "драже":
-                candyList.add(new Dragee(name, brand, shape, packageType, weight, calorieContent, sugarContent, hypoallergenic,
-                        filling, additives, flavors));
-                break;
-            case "Жувальна", "жувальна":
-                candyList.add(new Gum(name, brand, shape, packageType, weight, calorieContent, sugarContent, hypoallergenic,
-                        filling, additives, flavors));
-                break;
-            case "Желейна", "желейна":
-                candyList.add(new Jelly(name, brand, shape, packageType, weight, calorieContent, sugarContent, hypoallergenic,
-                        filling, additives, flavors));
-                break;
-            case "Льодяник", "льодяник":
-                candyList.add(new Lollipop(name, brand, shape, packageType, weight, calorieContent, sugarContent, hypoallergenic,
-                        filling, additives, flavors));
-                break;
-            case "Пастила", "пастила":
-                candyList.add(new Pastila(name, brand, shape, packageType, weight, calorieContent, sugarContent, hypoallergenic,
-                        filling, additives, flavors));
-                break;
-            case "Ірис", "ірис":
-                candyList.add(new Toffe(name, brand, shape, packageType, weight, calorieContent, sugarContent, hypoallergenic,
-                        filling, additives, flavors));
-                break;
-            case "Вафельна", "вафельна":
-                candyList.add(new Waffle(name, brand, shape, packageType, weight, calorieContent, sugarContent, hypoallergenic,
-                        filling, additives, flavors));
-                break;
-            default:
-                Logger.candyThisTypeNotExist();
-                break;
-        }
+        candyList.add(new Candy(name, brand, type, shape, packageType, weight, calorieContent, sugarContent,
+                hypoallergenic, filling, additives, flavors));
     }
 }
