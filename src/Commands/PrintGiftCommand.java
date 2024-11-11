@@ -20,7 +20,6 @@ public class PrintGiftCommand extends Command {
         Scanner scanner = new Scanner(System.in);
         String field = scanner.nextLine();
 
-        // Отримуємо записі мапи у вигляді списку
         List<Map.Entry<String, Candy>> entries = new ArrayList<>(gift.getListOfCandies().entrySet());
 
         if (field.equals("Калорійність") || field.equals("калорійність") || field.equals("ккал")) {
@@ -35,7 +34,6 @@ public class PrintGiftCommand extends Command {
             System.out.println("На основі цього параметру неможливо відсортувати список.");
         }
 
-        // Перетворюємо відсортований список назад у LinkedHashMap для збереження порядку
         Map<String, Candy> sortedMap = new LinkedHashMap<>();
         for (Map.Entry<String, Candy> entry : entries) {
             sortedMap.put(entry.getKey(), entry.getValue());

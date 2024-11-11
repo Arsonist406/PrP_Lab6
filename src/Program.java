@@ -58,9 +58,18 @@ public class Program {
     }
 
     public static void createStartCandy(ArrayList<Candy> candyList) {
-        Scanner scanner2 = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Створити пару стартових цукерок? (true / false)");
-        Boolean temp = scanner2.nextBoolean();
+        Boolean temp = null;
+
+        while (true) {
+            if (scanner.hasNextBoolean()) {
+                temp = scanner.nextBoolean();
+                break;
+            }
+            scanner.nextLine();
+            System.out.println("Unknown value. Re-enter the input");
+        }
 
         String path = "D:\\Шарага\\Проекти на джаві\\PrP_Lab5\\src\\candys";
 
