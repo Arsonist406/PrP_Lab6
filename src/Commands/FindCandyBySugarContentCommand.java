@@ -27,8 +27,9 @@ public class FindCandyBySugarContentCommand extends Command {
 
         for (Candy candy : gift.getListOfCandies().values()) {
             if (candy.getSugarContent() >= min && candy.getSugarContent() <= max) {
-                System.out.println("Знайдена цукерка:");
+                System.out.print("\nЗнайдена цукерка:");
                 System.out.println(candy);
+                System.out.println();
                 return;
             }
         }

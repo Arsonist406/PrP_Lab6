@@ -1,41 +1,48 @@
-package UnitTests.Function;
+package UnitTests.Commands;
 
 import Candy.Candy;
-import Function.FindCandyByName;
+import Commands.PrintCandyListCommand;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
-public class FindCandyByNameTest {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class PrintCandyListCommmandTest {
     private ArrayList<Candy> testCandyList;
-    private FindCandyByName testedFunction;
+    private PrintCandyListCommand testedCommand;
+
+    private PrintStream originalOut;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
     @BeforeEach
-    public void setup() {
-        testCandyList = new ArrayList<Candy>();
+    public void setUp() {
+        originalOut = System.out;
 
+        testCandyList = new ArrayList<>();
         testCandyList.add(new Candy("Шалена Бджілка", "Roshen", "Желейна", "Прямокутник", "Поліетилен", 8, 318, 65.5, false, "Фруктовий сік", "-", "Фрукти"));
         testCandyList.add(new Candy("Зоряне Сяйво", "Світоч", "Шоколадна", "Конус", "Фольга", 13, 497, 49, false, "-", "Вафельна посипка", "Арахіс"));
         testCandyList.add(new Candy("Плюсик", "Roshen", "Льодяник", "Еліпсоїд", "Поліетилен", 10, 392, 63.8, true, "-", "-", "Ментол"));
 
-        testedFunction = new FindCandyByName(testCandyList);
-
+        testedCommand = new PrintCandyListCommand(testCandyList);
         System.setOut(new PrintStream(outContent));
     }
 
     @Test
     public void executeTest() {
-        String input = "3";
-        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        System.setOut(new PrintStream(outContent));
 
-        Candy result = testedFunction.execute();
-        Candy expected = testCandyList.get(2);
-        assertEquals(expected, result);
+        testedCommand.execute();
+
+        String expected = testCandyList.get(0).toString() + "\r\n" + testCandyList.get(1).toString() + "\r\n" + testCandyList.get(2).toString();
+
+        String capturedOutput = "\n" + outContent.toString().trim();
+
+        assertEquals(expected, capturedOutput);
+
+        System.setOut(originalOut);
     }
 }

@@ -38,6 +38,10 @@ public class Program {
                     command3.execute();
                     break;
                 case "3":
+                    if (gift.getListOfCandies().isEmpty()) {
+                        System.out.println("Подарунок не створений.");
+                        break;
+                    }
                     FindCandyBySugarContentCommand command4 = new FindCandyBySugarContentCommand(gift);
                     command4.execute();
                     break;
