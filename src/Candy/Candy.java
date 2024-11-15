@@ -38,7 +38,7 @@ public class Candy {
     public double getWeight() {return weight;}
     public double getCalorieContent() {return calorieContent;}
     public double getSugarContent() {return sugarContent;}
-    public boolean isHypoallergenic() {return hypoallergenic;}
+    public boolean getHypoallergenic() {return hypoallergenic;}
     public String getFilling() {return filling;}
     public String getAdditives() {return additives;}
     public String getFlavors() {return flavors;}

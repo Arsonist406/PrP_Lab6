@@ -32,7 +32,8 @@ public class ShowMainMenuCommand extends Command {
         System.out.println("3. Знайти цукерку в новорічному подарунку за заданим діапазоном цукру");
         System.out.println("4. Вивести список цукерок");
         System.out.println("5. Редагувати список цукерок");
-        System.out.println("6. Вихід");
+        System.out.println("6. Відсортувати цукерки в подарунку");
+        System.out.println("7. Вихід");
         System.out.println(RESET);
     }
 }

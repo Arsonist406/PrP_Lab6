@@ -14,15 +14,24 @@ public class FindCandyByName {
     }
 
     public Candy execute() {
-        PrintCandyListCommand command = new PrintCandyListCommand(candyList);
-        command.execute();
-        System.out.print("Введіть назву цукерки зі списку: ");
+        int i = 1;
+        for (Candy candy : candyList) {
+            System.out.print(i);
+            System.out.print(". ");
+            System.out.println(candy.getName());
+            i++;
+        }
+
+        System.out.print("Введіть номер цукерки зі списку: ");
 
         Scanner scanner = new Scanner(System.in);
-        String name = scanner.nextLine();
+        int number = scanner.nextInt();
 
-        Candy result = candyList.stream().filter(candy -> candy.getName().equals(name)).findFirst().orElse(null);
-
-        return result;
+        while (true) {
+            if (number >= 1 && number <= candyList.size()) {
+                return candyList.get(number - 1);
+            }
+            System.out.println("Неправильний номер.");
+        }
     }
 }

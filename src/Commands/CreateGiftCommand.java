@@ -36,9 +36,9 @@ public class CreateGiftCommand extends Command {
 
             gift.addCandyToListOfCandies(result, amount);
 
-            System.out.println("Для закінчення введіть зараз 'end'.");
+            System.out.print("Для продовження введіть 1, щоб заврешити введіть будь-що інше: ");
             String input = scanner.nextLine();
-            if (input.equals("end")) {
+            if (!input.equals("1")) {
                 break;
             }
         }

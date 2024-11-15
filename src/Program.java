@@ -10,28 +10,30 @@ import java.util.Scanner;
 public class Program {
     public static void main(String[] args) {
         ArrayList<Candy> candyList = new ArrayList();
-        Gift gift = new Gift(null);
+        Gift gift = new Gift("-");
 
         createStartCandy(candyList);
-        System.out.println("Type '0' to show the menu.");
 
         Scanner scanner = new Scanner(System.in);
         String input;
 
+        ShowMainMenuCommand command1 = new ShowMainMenuCommand();
+
         while (true) {
-            System.out.print("Enter command: ");
+            command1.execute();
+            System.out.print("Введіть команду: ");
             input = scanner.nextLine();
 
             switch (input) {
-                case "0":
-                    ShowMainMenuCommand command1 = new ShowMainMenuCommand();
-                    command1.execute();
-                    break;
                 case "1":
                     CreateGiftCommand command2 = new CreateGiftCommand(gift, candyList);
                     command2.execute();
                     break;
                 case "2":
+                    if (gift.getListOfCandies().isEmpty()) {
+                        System.out.println("Подарунок не створений.");
+                        break;
+                    }
                     PrintGiftCommand command3 = new PrintGiftCommand(gift);
                     command3.execute();
                     break;
@@ -40,6 +42,10 @@ public class Program {
                     command4.execute();
                     break;
                 case "4":
+                    if (candyList.isEmpty()) {
+                        System.out.println("Список цукерок пустий.");
+                        break;
+                    }
                     PrintCandyListCommand command5 = new PrintCandyListCommand(candyList);
                     command5.execute();
                     break;
@@ -48,32 +54,44 @@ public class Program {
                     command6.execute();
                     break;
                 case "6":
+                    if (gift.getListOfCandies().isEmpty()) {
+                        System.out.println("Подарунок не створений.");
+                        break;
+                    }
+                    SortGiftCommand command8 = new SortGiftCommand(gift);
+                    command8.execute();
+                    break;
+                case "7":
                     ExitCommand command7 = new ExitCommand();
                     command7.execute();
                     break;
                 default:
-                    System.out.println("Unknown command");
+                    System.out.println("Невідома команда");
             }
         }
     }
 
     public static void createStartCandy(ArrayList<Candy> candyList) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Створити пару стартових цукерок? (true / false)");
-        Boolean temp = null;
+        System.out.println("Створити пару стартових цукерок? (так / ні)");
+        String temp;
+        Boolean temp2;
 
         while (true) {
-            if (scanner.hasNextBoolean()) {
-                temp = scanner.nextBoolean();
+            temp = scanner.nextLine();
+            if (temp.equals("так")) {
+                temp2 = true;
+                break;
+            } else if (temp.equals("ні")) {
+                temp2 = false;
                 break;
             }
-            scanner.nextLine();
-            System.out.println("Unknown value. Re-enter the input");
+            System.out.println("Повторіть введення");
         }
 
-        String path = "D:\\Шарага\\Проекти на джаві\\PrP_Lab5\\src\\candys";
+        String path = "D:\\Шарага\\Проекти на джаві\\PrP_Lab5\\candys";
 
-        if (temp) {
+        if (temp2) {
             ReadFromFile func = new ReadFromFile(path, candyList);
             func.readFile();
         }

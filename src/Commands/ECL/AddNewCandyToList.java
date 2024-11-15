@@ -36,16 +36,49 @@ public class AddNewCandyToList extends Command {
         Scanner scanner2 = new Scanner(System.in);
 
         System.out.print("Введіть вагу: ");
-        double weight = scanner2.nextDouble();
+        double weight = 0;
+        while (true) {
+            if (scanner2.hasNextDouble()) {
+                weight = scanner2.nextDouble();
+                break;
+            }
+            System.out.println("Повторіть введення");
+        }
 
         System.out.print("Введіть калорійність: ");
-        double calorieContent = scanner2.nextDouble();
+        double calorieContent = 0;
+        while (true) {
+            if (scanner2.hasNextDouble()) {
+                calorieContent = scanner2.nextDouble();
+                break;
+            }
+            System.out.println("Повторіть введення");
+        }
 
         System.out.print("Введіть вмістимість цукру: ");
-        double sugarContent = scanner2.nextDouble();
+        double sugarContent = 0;
+        while (true) {
+            if (scanner2.hasNextDouble()) {
+                sugarContent = scanner2.nextDouble();
+                break;
+            }
+            System.out.println("Повторіть введення");
+        }
 
-        System.out.print("Ця цукерка викликає алергічні реакції? (true / false): ");
-        boolean hypoallergenic = !scanner2.nextBoolean();
+        System.out.print("Ця цукерка викликає алергічні реакції? (так / ні): ");
+        boolean hypoallergenic = false;
+        String temp;
+        while (true) {
+            temp = scanner.nextLine();
+            if (temp.equals("так")) {
+                hypoallergenic = false;
+                break;
+            } else if (temp.equals("ні")) {
+                hypoallergenic = true;
+                break;
+            }
+            System.out.println("Повторіть введення");
+        }
 
         Scanner scanner3 = new Scanner(System.in);
 
