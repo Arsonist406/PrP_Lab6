@@ -1,27 +1,27 @@
 package UnitTests.Commands;
 
 import Candy.Candy;
-import Commands.PrintGiftCommand;
+import Commands.FindCandyBySugarContentCommand;
 import Gift.Gift;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class PrintGiftCommandTest {
+public class FindCandyBySugarContentCommandTest {
     private Gift testGift;
-    private PrintGiftCommand testedCommand;
+    private FindCandyBySugarContentCommand testedCommand;
 
     private PrintStream originalOut;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
     @BeforeEach
-    public void setup() {
+    public void setUp() {
         originalOut = System.out;
-
         testGift = new Gift("temp1");
 
         Candy candy1 = new Candy("Шалена Бджілка", "Roshen", "Желейна", "Прямокутник", "Поліетилен", 8, 318, 65.5, false, "Фруктовий сік", "-", "Фрукти");
@@ -34,16 +34,18 @@ public class PrintGiftCommandTest {
 
         testGift.setWeight(30*8+40*13+10*10);
 
-        testedCommand = new PrintGiftCommand(testGift);
+        testedCommand = new FindCandyBySugarContentCommand(testGift);
         System.setOut(new PrintStream(outContent));
     }
 
     @Test
     public void executeTest() {
-        System.setOut(new PrintStream(outContent));
+        String input = "48\n50";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
 
-        String expected = "Назва: " + testGift.getName() + "\r\n" + "Вага: " + testGift.getWeight() + "\r\n" +
-                "Список цукерок:" + "\r\n" + testGift.toString() + "\r\n";
+        Candy candy = new Candy("Зоряне Сяйво", "Світоч", "Шоколадна", "Конус", "Фольга", 13, 497, 49, false, "-", "Вафельна посипка", "Арахіс");
+
+        String expected = "Введіть нижню межу: " + "Введіть верхню межу: " + "\nЗнайдена цукерка:" + candy.toString() + "\r\n\r\n";
 
         testedCommand.execute();
 

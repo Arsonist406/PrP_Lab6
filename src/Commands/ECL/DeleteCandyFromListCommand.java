@@ -1,25 +1,35 @@
-package Commands;
+package Commands.ECL;
 
 import Candy.Candy;
+import Commands.Command;
 import ErrorMailer.ErrorMailer;
+import Function.FindCandyByName;
 import Logger.Logger;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
-public class PrintCandyListCommand extends Command {
+public class DeleteCandyFromListCommand extends Command {
     private ArrayList<Candy> candyList;
 
-    public PrintCandyListCommand(ArrayList<Candy> candyList) {
+    public DeleteCandyFromListCommand(ArrayList<Candy> candyList) {
         super();
         this.candyList = candyList;
     }
 
     @Override
-    public  void execute() {
+    public void execute() {
         try {
-            for (Candy candy : candyList) {
-                System.out.println(candy.toString());
+            Scanner scanner = new Scanner(System.in);
+            FindCandyByName func = new FindCandyByName(candyList, scanner);
+            Candy result = func.execute();
+
+            if (result != null) {
+                candyList.remove(result);
+                System.out.println("Цукерку видалено.");
+            } else {
+                System.out.println("Об'єкт з таким іменем не знайдено.");
             }
         } catch (Exception e) {
             ErrorMailer mailer = new ErrorMailer(e.getMessage());

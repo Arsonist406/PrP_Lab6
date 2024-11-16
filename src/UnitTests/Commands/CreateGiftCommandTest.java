@@ -1,22 +1,24 @@
 package UnitTests.Commands;
 
 import Candy.Candy;
-import Commands.PrintCandyListCommand;
+import Commands.CreateGiftCommand;
+import Gift.Gift;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayOutputStream;
+import java.io.ByteArrayInputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class PrintCandyListCommmandTest {
+public class CreateGiftCommandTest {
+    private Gift expectedGift;
+    private Gift actualGift;
     private ArrayList<Candy> testCandyList;
-    private PrintCandyListCommand testedCommand;
+    private CreateGiftCommand testedCommand;
 
     private PrintStream originalOut;
-    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
     @BeforeEach
     public void setUp() {
@@ -28,21 +30,22 @@ public class PrintCandyListCommmandTest {
         testCandyList.add(new Candy("Зоряне Сяйво", "Світоч", "Шоколадна", "Конус", "Фольга", 13, 497, 49, false, "-", "Вафельна посипка", "Арахіс"));
         testCandyList.add(new Candy("Плюсик", "Roshen", "Льодяник", "Еліпсоїд", "Поліетилен", 10, 392, 63.8, true, "-", "-", "Ментол"));
 
-        testedCommand = new PrintCandyListCommand(testCandyList);
-        System.setOut(new PrintStream(outContent));
+        expectedGift = new Gift("Зима");
+        expectedGift.addCandyToListOfCandies(testCandyList.get(2), "50");
+        expectedGift.addCandyToListOfCandies(testCandyList.get(1), "30");
+
+        actualGift = new Gift("-");
+        testedCommand = new CreateGiftCommand(actualGift, testCandyList);
     }
 
     @Test
     public void executeTest() {
-        System.setOut(new PrintStream(outContent));
+        String input = "Зима\r\n3\r\n50\r\n1\r\n2\r\n30\r\n4";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
 
         testedCommand.execute();
 
-        String expected = testCandyList.get(0).toString() + "\r\n" + testCandyList.get(1).toString() + "\r\n" + testCandyList.get(2).toString();
-
-        String capturedOutput = "\n" + outContent.toString().trim();
-
-        assertEquals(expected, capturedOutput);
+        assertEquals(expectedGift.toString(), actualGift.toString());
 
         System.setOut(originalOut);
     }
